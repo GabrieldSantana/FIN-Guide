@@ -1,0 +1,40 @@
+/* COR DO TEXTO  */
+body {
+    color: white;
+}
+
+/* Cores botões */
+
+.btn-roxo-claro {
+    background-color: #AD8AFF;
+    color: #240E2E;
+
+    & > :hover {
+        background-color: #240E2E;
+        color: #AD8AFF;
+    }
+}
+
+/* Cores de fundo */
+
+/* background sessão adicionar */
+.bg-s-adicionar {
+    background-color: #322C3A;
+}
+
+.bg-input {
+    background-color: #201924;
+}
+
+/* LOGO */
+.img-logo {
+    width: auto;
+    height: 110px;
+}
+
+
+/* SESSÃO EXTRATO */
+
+.bg-s-extrato {
+    background-color: #201924;
+}
