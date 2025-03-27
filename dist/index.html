@@ -11,72 +11,86 @@
     <link rel="stylesheet" href="css/style.css">
 
 </head>
-<body>
+<body class="">
 
-    <div class="row vh-100">
-        <section class="nova-transacao bg-s-adicionar col-3">
-
-            <div class="d-flex flex-column">
-                <div><img class="img-logo" src="images/image.png" alt="Logo do site FIN Guide"></div>
-                <h2>Nova Transação</h2>
-                <div>
-                    <p>Tipo de transação</p>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control bg-input border-black">
-                        <button class="btn btn-outline-secondary dropdown-toggle border bg-input border-black" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">Compra</a></li>
-                            <li><a class="dropdown-item" href="#">Venda</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div>
-                    <p>Nome da mercadoria</p>
-                    <input type="text" class="form-control bg-input border-black">
-                </div>
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <p>Quantidade</p>
-                        <input type="text" class="form-control bg-input border-black">
+    <div class="container-fluid p-0">
+        <div class="row vh-100 m-0">
+            <section class="nova-transacao bg-s-adicionar col-12 col-lg-3">
+                <div class="container d-flex flex-column gap-3">
+                    <div class="w-auto py-5">
+                        <img class="img-logo" src="images/image.png" alt="Logo do site FIN Guide">
                     </div>
                     <div>
-                        <p>Valor</p>
-                        <input type="text" class="form-control bg-input border-black">
+                        <h2>Nova Transação</h2>
+                        <div>
+                            <p>Tipo de transação</p>
+                            <div class="input-group mb-3">
+                                <input type="text" placeholder="Compra" class="form-control bg-input border-black">
+                                <button class="btn btn-outline-secondary dropdown-toggle border bg-input border-black" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="#">Compra</a></li>
+                                    <li><a class="dropdown-item" href="#">Venda</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div>
+                            <p>Nome da mercadoria</p>
+                            <input type="text" placeholder="Produto" class="form-control bg-input border-black">
+                        </div>
+                        <div class="d-flex justify-content-between gap-4">
+                            <div>
+                                <p>Quantidade</p>
+                                <input type="text" placeholder="00" class="form-control bg-input border-black">
+                            </div>
+                            <div>
+                                <p>Valor</p>
+                                <input type="text" placeholder="R$ 0,00" class="form-control bg-input border-black">
+                            </div>
+                        </div>
+    
+                        <div class="d-flex flex-column g-3">
+                            <button class="btn btn-link text-light text-end">Limpar</button>
+                            <div class="d-flex flex-column gap-3">
+                                <button class="btn btn-primary btn-roxo-claro border-0">Adicionar</button>
+                                <button class="btn btn-primary btn-roxo-claro border-0 d-lg-none">Visualizar Extrato</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <button class="btn btn-link text-light text-end">Limpar</button>
-                <button class="btn btn-primary btn-roxo-claro border-0">Adicionar</button>
-            </div>
-        </section>
-        <!-- SESSÃO EXTRATO -->
-        <section class="extrato bg-s-extrato col-9 ">
-            <h2>Extrato</h2>
-            <div>
-                <h5>Saldo</h5>
-                <h5>R$00,00</h5>
-            </div>
-            <table class="table table-dark table-striped">
-            <thead>
-                <tr>
-                <th scope="col">#</th>
-                <th scope="col">Mercadoria</th>
-                <th scope="col">Quantidade</th>
-                <th scope="col">Valor</th>
-                </tr>
-            </thead>
-            
-            <!-- tbody para ser modificado -->
-            <tbody>
-                <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tr>
-            </tbody>
-            
-            </table>
-        </section>
+            </section>
+            <!-- SESSÃO EXTRATO -->
+            <section class="extrato bg-s-extrato col-12 col-lg-9 vh-100 d-none d-lg-block">
+                <div class="container py-4">
+                    <h2>Extrato</h2>
+                    <div class="text-end ">
+                        <h5 class="txt-roxo-claro">Saldo</h5>
+                        <h5 class="txt-roxo-claro">R$00,00</h5>
+                    </div> 
+                    <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Mercadoria</th>
+                        <th scope="col">Quantidade</th>
+                        <th scope="col">Valor</th>
+                        <th scope="col"></th>
+                        </tr>
+                    </thead>
+        
+                    <!-- tbody para ser modificado -->
+                    <tbody>
+                        <tr>
+                        <th scope="row"></th>
+                        <td><h5 class="txt-roxo-claro">Total</h5></td>
+                        <td></td>
+                        <td><h5 class="txt-roxo-claro">R$ 0,00</h5></td>
+                        <td></td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
