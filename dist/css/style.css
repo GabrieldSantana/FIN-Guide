@@ -24,6 +24,10 @@ body {
 
 .bg-input {
     background-color: #201924;
+
+    &::placeholder {
+        color: #8C8C8C;
+    }
 }
 
 /* LOGO */
@@ -37,4 +41,8 @@ body {
 
 .bg-s-extrato {
     background-color: #201924;
+}
+
+.txt-roxo-claro {
+    color: #AD8AFF;
 }
