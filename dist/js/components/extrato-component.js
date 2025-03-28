@@ -1,7 +1,7 @@
-import conta from "../types/Conta";
-import { formatarMoeda } from "../utils/formatters";
+import conta from "../types/Conta.js";
+import { formatarMoeda } from "../utils/formatters.js";
 // Elemento Transação Extrato
-const elemTransacaoExt = document.querySelector(".extrato");
+const elemTransacaoExt = document.getElementById("sessao-extrato");
 renderizarExtrato();
 function renderizarExtrato() {
     const transacoes = conta.getTransacoes();
@@ -20,13 +20,12 @@ function renderizarExtrato() {
         `;
         i++;
     }
-    if (htmlRegistrosTransacoes == "")
-        htmlRegistrosTransacoes = "<div>Não há transações registradas!</div>";
-    elemTransacaoExt.innerHTML = htmlRegistrosTransacoes;
+    // if(htmlRegistrosTransacoes == "") htmlRegistrosTransacoes = "<div>Não há transações registradas!</div>";
+    // elemTransacaoExt.innerHTML = htmlRegistrosTransacoes;
 }
-// const ExtratoComponent = {
-//     atualizar(): void {
-//         renderizarExtrado()
-//     }
-// }
-// export default ExtratoComponent;
+const ExtratoComponent = {
+    atualizar() {
+        this.renderizarExtrato();
+    }
+};
+export default ExtratoComponent;

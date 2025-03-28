@@ -4,16 +4,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-import { Armazenador } from "./Armazenador";
-import { ValidaCompra, ValidaVenda } from "./Decorators";
-import { TipoTransacao } from "./TipoTransacao";
+import { Armazenador } from "./Armazenador.js";
+import { ValidaCompra, ValidaVenda } from "./Decorators.js";
+import { TipoTransacao } from "./TipoTransacao.js";
 export class Conta {
     nome;
     saldo = Armazenador.obter("saldo") || 0;
-    transacoes = Armazenador.obter(("transacoes")) || [];
+    transacoes = Armazenador.obter("transacoes") || [];
     constructor() { }
     getSaldo() {
-        this.saldo;
+        return this.saldo;
     }
     getTransacoes() {
         return this.transacoes;
