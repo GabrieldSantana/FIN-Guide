@@ -22,6 +22,10 @@ body {
     background-color: #322C3A;
 }
 
+.cor-txt-placeholder {
+    color: #8C8C8C;
+}
+
 .bg-input {
     background-color: #201924;
 
