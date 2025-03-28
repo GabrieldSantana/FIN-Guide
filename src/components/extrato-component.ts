@@ -1,9 +1,9 @@
-import conta from "../types/Conta";
-import { Transacao } from "../types/Transacao";
-import { formatarMoeda } from "../utils/formatters";
+import conta from "../types/Conta.js";
+import { Transacao } from "../types/Transacao.js";
+import { formatarMoeda } from "../utils/formatters.js";
 
 // Elemento Transação Extrato
-const elemTransacaoExt: HTMLElement = document.querySelector(".extrato");
+const elemTransacaoExt: HTMLElement = document.getElementById("sessao-extrato");
 
 renderizarExtrato();
 
@@ -27,15 +27,15 @@ function renderizarExtrato(): void {
         i++
     }
 
-    if(htmlRegistrosTransacoes == "") htmlRegistrosTransacoes = "<div>Não há transações registradas!</div>";
+    // if(htmlRegistrosTransacoes == "") htmlRegistrosTransacoes = "<div>Não há transações registradas!</div>";
 
-    elemTransacaoExt.innerHTML = htmlRegistrosTransacoes;
+    // elemTransacaoExt.innerHTML = htmlRegistrosTransacoes;
 }
 
-// const ExtratoComponent = {
-//     atualizar(): void {
-//         renderizarExtrado()
-//     }
-// }
+const ExtratoComponent = {
+    atualizar(): void {
+        this.renderizarExtrato()
+    }
+}
 
-// export default ExtratoComponent;
+export default ExtratoComponent;
