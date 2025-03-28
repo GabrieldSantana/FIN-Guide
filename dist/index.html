@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,51 +20,49 @@
                     <div class="w-auto py-5">
                         <img class="img-logo" src="images/image.png" alt="Logo do site FIN Guide">
                     </div>
-                    <div>
+                    <form class="form">
                         <h2>Nova Transação</h2>
                         <div>
-                            <p>Tipo de transação</p>
+                            <label>Tipo de transação</label>
                             <div class="input-group mb-3">
-                                <input type="text" placeholder="Compra" class="form-control bg-input border-black">
-                                <button class="btn btn-outline-secondary dropdown-toggle border bg-input border-black" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="#">Compra</a></li>
-                                    <li><a class="dropdown-item" href="#">Venda</a></li>
-                                </ul>
+                                <select id="tipoTransacao" class="form-select bg-input border-black cor-txt-placeholder" id="inputGroupSelect01">
+                                    <option class="cor-txt-placeholder" value="Compra">Compra</option>
+                                    <option class="cor-txt-placeholder" value="Venda">Venda</option>
+                                </select>
                             </div>
                         </div>
                         <div>
-                            <p>Nome da mercadoria</p>
-                            <input type="text" placeholder="Produto" class="form-control bg-input border-black">
+                            <label>Nome da mercadoria</label>
+                            <input id="nomeProduto" type="text" placeholder="Produto" class="form-control bg-input border-black">
                         </div>
                         <div class="d-flex justify-content-between gap-4">
                             <div>
-                                <p>Quantidade</p>
-                                <input type="text" placeholder="00" class="form-control bg-input border-black">
+                                <label>Quantidade</label>
+                                <input id="quantidade" type="text" placeholder="00" class="form-control bg-input border-black">
                             </div>
                             <div>
-                                <p>Valor</p>
-                                <input type="text" placeholder="R$ 0,00" class="form-control bg-input border-black">
+                                <label>Valor</label>
+                                <input id="valor" type="text" placeholder="R$ 0,00" class="form-control bg-input border-black">
                             </div>
                         </div>
-    
                         <div class="d-flex flex-column g-3">
                             <button class="btn btn-link text-light text-end">Limpar</button>
                             <div class="d-flex flex-column gap-3">
-                                <button class="btn btn-primary btn-roxo-claro border-0">Adicionar</button>
+                                <button class="btn btn-primary btn-roxo-claro border-0" type="submit">Adicionar</button>
                                 <button class="btn btn-primary btn-roxo-claro border-0 d-lg-none">Visualizar Extrato</button>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </section>
+            
             <!-- SESSÃO EXTRATO -->
             <section class="extrato bg-s-extrato col-12 col-lg-9 vh-100 d-none d-lg-block">
                 <div class="container py-4">
                     <h2>Extrato</h2>
                     <div class="text-end ">
                         <h5 class="txt-roxo-claro">Saldo</h5>
-                        <h5 class="txt-roxo-claro">R$00,00</h5>
+                        <h5 id="saldo" class="txt-roxo-claro">R$00,00</h5>
                     </div> 
                     <table class="table table-dark table-striped">
                     <thead>
