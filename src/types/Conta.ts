@@ -1,17 +1,17 @@
-import { Armazenador } from "./Armazenador";
-import { ValidaCompra, ValidaVenda } from "./Decorators";
-import { TipoTransacao } from "./TipoTransacao";
-import { Transacao } from "./Transacao";
+import { Armazenador } from "./Armazenador.js";
+import { ValidaCompra, ValidaVenda } from "./Decorators.js";
+import { TipoTransacao } from "./TipoTransacao.js";
+import { Transacao } from "./Transacao.js";
 
 export class Conta {
     protected nome: string
     protected saldo: number = Armazenador.obter<number>("saldo") || 0;
-    private transacoes: Transacao[] = Armazenador.obter<Transacao[]>(("transacoes")) || [];
+    private transacoes: Transacao[] = Armazenador.obter<Transacao[]>("transacoes") || [];
 
     constructor() {}
 
     getSaldo() {
-        this.saldo;
+        return this.saldo;
     }
 
     getTransacoes() {
