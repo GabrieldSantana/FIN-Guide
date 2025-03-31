@@ -16,16 +16,3 @@ export function ValidaVenda(target, propertyKey, descriptor) {
         return originalMethod.apply(this, [valorVenda]); // Chama o método original
     };
 }
-// // Função auxiliar para validar uma transação
-// export function validaTransacao(transacao: Transacao): boolean {
-//     if (!transacao.nomeProduto || transacao.nomeProduto.trim() === "") {
-//         return false; // Nome do produto ausente ou vazio
-//     }
-//     if (transacao.quantidade === undefined || transacao.quantidade === null || isNaN(transacao.quantidade)) {
-//         return false; // Quantidade ausente ou inválida
-//     }
-//     if (transacao.valor === undefined || transacao.valor === null || isNaN(transacao.valor)) {
-//         return false; // Valor ausente ou inválido
-//     }
-//     return true; // Todos os campos estão preenchidos corretamente
-// }

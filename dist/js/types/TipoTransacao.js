@@ -1,5 +1,5 @@
 export var TipoTransacao;
 (function (TipoTransacao) {
-    TipoTransacao["COMPRA"] = "Compra";
-    TipoTransacao["VENDA"] = "Venda";
+    TipoTransacao["COMPRA"] = "COMPRA";
+    TipoTransacao["VENDA"] = "VENDA";
 })(TipoTransacao || (TipoTransacao = {}));

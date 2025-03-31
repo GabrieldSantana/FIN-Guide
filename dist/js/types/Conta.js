@@ -8,9 +8,8 @@ import { Armazenador } from "./Armazenador.js";
 import { ValidaCompra, ValidaVenda } from "./Decorators.js";
 import { TipoTransacao } from "./TipoTransacao.js";
 export class Conta {
-    nome;
-    saldo = Armazenador.obter("saldo") || 0;
-    transacoes = Armazenador.obter("transacoes") || [];
+    saldo = Armazenador.obter("saldo") ?? 2000;
+    transacoes = Armazenador.obter("transacoes") ?? [];
     constructor() { }
     getSaldo() {
         return this.saldo;
@@ -20,22 +19,30 @@ export class Conta {
     }
     registrarTransacao(novaTransacao) {
         if (novaTransacao.tipoTransacao == TipoTransacao.COMPRA) {
-            this.comprar(novaTransacao.valor);
-            novaTransacao.valor *= -1;
+            this.comprar(novaTransacao.valor * novaTransacao.quantidade);
+            console.log("comprado");
         }
         else if (novaTransacao.tipoTransacao == TipoTransacao.VENDA) {
-            this.vender(novaTransacao.valor);
+            this.vender(novaTransacao.valor * novaTransacao.quantidade);
+            console.log("vendido");
         }
         this.transacoes.push(novaTransacao);
-        Armazenador.salvar("transacoes", JSON.stringify(this.transacoes));
+        Armazenador.salvar("transacoes", this.transacoes);
     }
     comprar(valor) {
-        this.saldo -= valor;
-        Armazenador.salvar("saldo", this.saldo.toString());
+        try {
+            this.saldo -= valor;
+            Armazenador.salvar("saldo", this.saldo);
+        }
+        catch (error) {
+            alert(error.message);
+        }
+        return true;
     }
     vender(valor) {
         this.saldo += valor;
-        Armazenador.salvar("saldo", this.saldo.toString());
+        Armazenador.salvar("saldo", this.saldo);
+        return true;
     }
 }
 __decorate([
