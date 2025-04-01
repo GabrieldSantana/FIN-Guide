@@ -11,15 +11,6 @@ export class Armazenador {
             return null;
         return JSON.parse(valor);
     }
-    // static deletar<T>(chave: string, id: number, transacoes: any): T | null {
-    //     const index = transacoes.findIndex((item: any) => item.id === id);
-    //     if (index === -1) {
-    //         throw new Error("Item não encontrado");
-    //     }
-    //     localStorage.removeItem(chave); // Remove o item do localStorage
-    //     const novaListaTransacoes = transacoes.splice(index, 1);
-    //     return novaListaTransacoes;
-    // }
     static apagarRegistros(chave) {
         localStorage.removeItem(chave);
     }
