@@ -22,3 +22,15 @@ export function ValidaVenda(target: any, propertyKey: string, descriptor: Proper
         return originalMethod.apply(this, [valorVenda]) // Chama o método original
     }
 }
+
+export function ValidaValorTransacao(valor: string): number | null {
+    const valorLimpo = valor.replace(/[^\d,]/g, "").replace(",", ".");
+    const valorConvertido = parseFloat(valorLimpo);
+
+    if (isNaN(valorConvertido)) {
+        alert("Valor inserido inválido");
+        return null;
+    }
+
+    return valorConvertido;
+}
