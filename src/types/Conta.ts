@@ -4,43 +4,50 @@ import { TipoTransacao } from "./TipoTransacao.js";
 import { Transacao } from "./Transacao.js";
 
 export class Conta {
-    protected nome: string
-    protected saldo: number = Armazenador.obter<number>("saldo") || 0;
-    private transacoes: Transacao[] = Armazenador.obter<Transacao[]>("transacoes") || [];
+    protected saldo: number = Armazenador.obter<number>("saldo") ?? 2000;
+    private transacoes: Transacao[] = Armazenador.obter<Transacao[]>("transacoes") ?? [];
 
     constructor() {}
 
-    getSaldo() {
+    getSaldo(): number {
         return this.saldo;
     }
 
-    getTransacoes() {
+    getTransacoes(): Transacao[] {
         return this.transacoes;
     }
 
     registrarTransacao(novaTransacao: Transacao): void {
         if(novaTransacao.tipoTransacao == TipoTransacao.COMPRA) {
-            this.comprar(novaTransacao.valor);
-            novaTransacao.valor *= -1;
+            this.comprar(novaTransacao.valor * novaTransacao.quantidade);
+            console.log("comprado")
         }
         else if(novaTransacao.tipoTransacao == TipoTransacao.VENDA) {
-            this.vender(novaTransacao.valor);
+            this.vender(novaTransacao.valor * novaTransacao.quantidade);
+            console.log("vendido")
         }
 
         this.transacoes.push(novaTransacao);
-        Armazenador.salvar("transacoes", JSON.stringify(this.transacoes));
+        Armazenador.salvar("transacoes", this.transacoes);
     }
 
     @ValidaCompra
-    comprar(valor:number): void {
-        this.saldo -= valor;
-        Armazenador.salvar("saldo", this.saldo.toString());
+    comprar(valor:number): boolean {
+        try {
+            this.saldo -= valor;
+            Armazenador.salvar("saldo", this.saldo);
+        }
+        catch (error) {
+        alert(error.message);
+    }
+        return true;
     }
 
     @ValidaVenda
-    vender(valor:number): void {
+    vender(valor:number): boolean {
         this.saldo += valor;
-        Armazenador.salvar("saldo", this.saldo.toString());
+        Armazenador.salvar("saldo", this.saldo);
+        return true;
     }
 }
 
