@@ -61,9 +61,15 @@ elementoVisualizar.addEventListener("click", function(event) {
 
         console.log("Visualizar clicado");
 
-        // const transacaoVisivel = !elementoTransacao.classList.contains("d-none");
-        // const transacaoVisivel = !elementoTransacao.classList.contains("d-none");
+        // Verifica o estado atual (se transação está visível)
+        const transacaoVisivel = !elementoTransacao.classList.contains("d-none");
 
+        // Alterna as seções: mostra uma, esconde a outra
+        alternarDisplay(elementoTransacao, !transacaoVisivel);
+        alternarDisplay(elementoExtrato, transacaoVisivel);
+
+        // // Ajusta o texto do botão conforme a seção visível
+        // elementoVisualizar.textContent = transacaoVisivel ? "Nova Transação" : "Visualizar Extrato";
 
         alternarDisplay(elementoTransacao);
         alternarDisplay(elementoExtrato);
