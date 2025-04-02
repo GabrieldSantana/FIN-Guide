@@ -7,7 +7,7 @@ renderizarSaldo();
 
 function renderizarSaldo(): void {
     if (elementoSaldo != null)
-        elementoSaldo.textContent = formatarMoeda(conta.getSaldo());
+        elementoSaldo.textContent = formatarMoeda(conta.getSaldo()); // Altera o html com o saldo convertido
 }
 
 const SaldoComponent = {
