@@ -1,10 +1,11 @@
-import conta from "./Conta";
+import { ChaveArmazenador } from "./ChaveArmazenador.js";
+import conta from "./Conta.js";
 
 export class Armazenador {
     private constructor() {} //Não permite estanciar a classe forçando a utilização dos métodos estáticos
 
     static salvar(chave: string, valor: any): void {
-        const valorComoString = JSON.stringify(valor); // COnverte o valor para string
+        const valorComoString = JSON.stringify(valor); // Converte o valor para string
         localStorage.setItem(chave, valorComoString); // Armazena no localStorage
     }
 
@@ -19,9 +20,11 @@ export class Armazenador {
     static apagarRegistros(chave: string): void {
         localStorage.removeItem(chave)
     }
-    
-    static remover(index: number): any {
+
+    static removerTransacao(nomeProduto: string): void {
         const transacoes = conta.getTransacoes();
-        return transacoes.splice(index, 1);
+        const novalistaTransacoes = transacoes.filter((transacao) => transacao.nomeProduto !== nomeProduto);
+        this.apagarRegistros(ChaveArmazenador.TRANSACOES);
+        this.salvar(ChaveArmazenador.TRANSACOES, novalistaTransacoes);
     }
 }
