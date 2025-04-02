@@ -50,3 +50,9 @@ body {
 .txt-roxo-claro {
     color: #AD8AFF;
 }
+
+.tabela{
+    max-height: 400px; /* Ajuste a altura máxima conforme necessário */
+    overflow-y: auto; /* Ativa o scroll vertical */
+    overflow-x: hidden; /* Evita scroll horizontal desnecessário */
+}
