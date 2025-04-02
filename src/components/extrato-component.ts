@@ -1,7 +1,9 @@
+import { Armazenador } from "../types/Armazenador.js";
 import conta from "../types/Conta.js";
 import { TipoTransacao } from "../types/TipoTransacao.js";
 import { Transacao } from "../types/Transacao.js";
 import { formatarMoeda } from "../utils/formatters.js";
+import SaldoComponent from "./saldo-component.js";
 
 // Elemento Transação Extrato
 const elemTransacaoExt: HTMLElement = document.getElementById("extrato");
@@ -12,19 +14,14 @@ function renderizarExtrato(): void {
     const transacoes: Transacao[] = conta.getTransacoes();
     elemTransacaoExt.innerHTML = "";
 
-    console.log(transacoes);
-
     let htmlRegistrosTransacoes: string = "";
     let total = 0;
 
     for (const transacao of transacoes) {
         const sinal = transacao.tipoTransacao === TipoTransacao.COMPRA ? '-' : '+';
         const classeSinal = transacao.tipoTransacao === TipoTransacao.COMPRA ? 'text-danger' : 'text-success';
-        
-        // Calcula o valor total da transação (quantidade * valor unitário)
-        const valorTransacao = (transacao.quantidade) * (transacao.valor);
-
-        const multiplicador = (transacao.tipoTransacao === TipoTransacao.COMPRA ? -1 : 1);
+        const valorTransacao = transacao.quantidade * transacao.valor;
+        const multiplicador = transacao.tipoTransacao === TipoTransacao.COMPRA ? -1 : 1;
         total += multiplicador * valorTransacao;
 
         htmlRegistrosTransacoes += `
@@ -33,13 +30,11 @@ function renderizarExtrato(): void {
                 <td>${transacao.nomeProduto}</td>
                 <td>${transacao.quantidade}</td>
                 <td>${formatarMoeda(transacao.valor)}</td>
-                <td><button id="btn-excluir" class="btn-excluir btn text-bg-dark"><i class="bi bi-trash3"></i></button></td>
+                <td><i class="bi bi-trash d-none d-lg-block lixeira" data-nome="${transacao.nomeProduto}"></i></td>
             </tr>
         `;
     }
 
-
-    // Adiciona a linha de total
     htmlRegistrosTransacoes += `
         <tr>
             <th scope="row"></th>
@@ -51,6 +46,23 @@ function renderizarExtrato(): void {
     `;
 
     elemTransacaoExt.innerHTML = htmlRegistrosTransacoes;
+
+    // Vincular eventos após inserir o HTML
+    const lixeiras = elemTransacaoExt.querySelectorAll('.lixeira');
+    lixeiras.forEach(lixeira => {
+        lixeira.addEventListener('click', (event) => {
+            console.log("lixeira clicada");
+            const icone = event.target as HTMLElement;
+            const linha = icone.closest('tr');
+            const nomeProduto = icone.getAttribute('data-nome');
+            if (linha) {
+                linha.remove();
+            }
+            Armazenador.removerTransacao(nomeProduto);
+
+            SaldoComponent.atualizar();
+        });
+    });
 }
 
 const ExtratoComponent = {
