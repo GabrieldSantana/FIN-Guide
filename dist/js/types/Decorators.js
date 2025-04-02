@@ -16,12 +16,3 @@ export function ValidaVenda(target, propertyKey, descriptor) {
         return originalMethod.apply(this, [valorVenda]); // Chama o método original
     };
 }
-export function ValidaValorTransacao(valor) {
-    const valorLimpo = valor.replace(/[^\d,]/g, "").replace(",", ".");
-    const valorConvertido = parseFloat(valorLimpo);
-    if (isNaN(valorConvertido)) {
-        alert("Valor inserido inválido");
-        return null;
-    }
-    return valorConvertido;
-}

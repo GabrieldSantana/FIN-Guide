@@ -4,7 +4,7 @@ const elementoSaldo = document.getElementById('saldo');
 renderizarSaldo();
 function renderizarSaldo() {
     if (elementoSaldo != null)
-        elementoSaldo.textContent = formatarMoeda(conta.getSaldo());
+        elementoSaldo.textContent = formatarMoeda(conta.getSaldo()); // Altera o html com o saldo convertido
 }
 const SaldoComponent = {
     atualizar() {
